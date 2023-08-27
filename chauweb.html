@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="chauweb.css">
+    <meta charset="UTF-8">
+    <title>Chau Truong</title> 
+  </head>
+
+<body>
+  <header>  
+                <nav class="top-nav">  
+                  <div class="logo-container">  
+                    <div class="logo">
+                        <img src="mctlogo.png" width="150px" alt="logo"> 
+                        <span class="logo-name">Chau Truong</span>
+                    </div>
+                </div>
+                  <ul class="navItems"> 
+                      <li> <a href="chauweb.html">Home</a> </li>
+                      <li> <a href="about.html">About</a> </li>
+                      <li> <a href="skills.html">Skills</a> </li>
+                  </ul>
+              </nav>
+  
+
+                <div class="wrapper">
+                    <div class="cols cols0">
+                      <span class="topline">Hello</span>
+                      <h1>I'm a <span class="multiText"></span></h1>
+                      <p>My name is Chau and I am a Junior attending the University of California, Riverside</p>
+                      <p>studying Computer Science and Business. </p>
+                      <div></div>
+                        <div class="btns">
+                            <button> Resume </button>
+                            <button><a href="https://github.com/myctruongg" target="_blank">GitHub</a></button>
+                        </div>
+                    </div>
+                    <div class="cols cols1">
+                        <div class="imgbox">
+                            <img src="img.png">
+                        </div>
+                    </div>
+                </div>
+  </header>
+
+<div class= "h2"> Who am I?</div>
+<div class="intro" style="color: #1B1414;"> 
+                  <p> Hey there! I'm Chau, an energetic explorer and enthusiastic coder who's always chasing the next exciting project. My passion for healthy, active living fuels my drive for excellence in every aspect of life.
+
+                    Coding is where my creativity takes flight. I thrive on crafting impeccable user experiences and engineering innovative solutions. But that's not all – I'm also deeply invested in capturing the world's beauty through my digital creations.
+                    
+                    When I'm not immersed in code, you'll find me embracing the freelance world, working on projects that excite me and allow me to bring my creative visions to life. With an unquenchable thirst for learning and a genuine love for creating, I'm on a mission to make a positive impact one project at a time.
+                    
+                    Join me as I navigate this dynamic journey, exploring, creating, and building while embracing a fit and active lifestyle. Let's make our mark on the digital canvas and beyond!"</p>
+                  </div>
+
+
+                  <div class="three-column-section">
+                    <a href="http://www.apoucr.org/" class="column">
+                        <img src="image1.jpg" alt="Image 1">
+                        <h2>Alpha Phi Omega</h2>
+                        <p>Service for the Brothers, the Campus, the Community, and the Nation.</p>
+                    </a>
+                    <a href="https://www.example2.com" class="column">
+                        <img src="image2.jpg" alt="Image 2">
+                        <h2>Arome Floral</h2>
+                        <p>Owner of a local flower shop in Riverside California</p>
+                    </a>
+                    <a href="https://myctruong.weebly.com/" class="column">
+                        <img src="image3.jpg" alt="Image 3">
+                        <h2>Content Creation</h2>
+                        <p>Freelancer in Cinematography and Photography</p>
+                    </a>
+                </div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector("header");
+    const threeColumnSection = document.querySelector(".three-column-section");
+    const colorChangeThreshold = threeColumnSection.offsetTop;
+
+    window.addEventListener("scroll", function () {
+        const scrolledPercentage = (window.scrollY / colorChangeThreshold) * 100;
+
+        const colorStart = [51, 49, 50]; 
+        const colorMiddle = [230, 207, 196]; 
+        const colorEnd = [51, 49, 50]; 
+
+        let currentColor;
+
+        if (scrolledPercentage <= 50) {
+            const middlePercentage = (scrolledPercentage / 50);
+            currentColor = colorStart.map((start, index) => {
+                const range = colorMiddle[index] - start;
+                return Math.round(start + (range * middlePercentage));
+            });
+        } else {
+            const middlePercentage = ((scrolledPercentage - 50) / 50);
+            currentColor = colorMiddle.map((start, index) => {
+                const range = colorEnd[index] - start;
+                return Math.round(start + (range * middlePercentage));
+            });
+        }
+
+        const newColor = `rgb(${currentColor[0]}, ${currentColor[1]}, ${currentColor[2]})`;
+
+        header.style.backgroundColor = newColor;
+        document.body.style.backgroundColor = newColor;
+    });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const textElement = document.querySelector('.multiText');
+    const cursorElement = document.querySelector('.cursor');
+    const texts = ["student", "coder", "creator"];
+    let currentTextIndex = 0;
+    let currentText = texts[currentTextIndex];
+    let currentCharIndex = 0;
+
+    function type() {
+        if (currentCharIndex < currentText.length) {
+            textElement.textContent += currentText[currentCharIndex];
+            currentCharIndex++;
+            setTimeout(type, 100); // Adjust the typing speed here
+        } else {
+            setTimeout(erase, 1500); // Adjust the delay before erasing
+        }
+    }
+
+    function erase() {
+        if (currentCharIndex > 0) {
+            textElement.textContent = currentText.substring(0, currentCharIndex - 1);
+            currentCharIndex--;
+            setTimeout(erase, 50); // Adjust the erasing speed here
+        } else {
+            currentTextIndex = (currentTextIndex + 1) % texts.length;
+            currentText = texts[currentTextIndex];
+            setTimeout(type, 100); // Start typing the next text
+        }
+    }
+
+    type(); // Start the animation
+})
+  </script>
+
+  </body>
+</html>
